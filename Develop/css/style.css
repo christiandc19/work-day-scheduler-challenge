@@ -70,6 +70,11 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-.list-group-item {
-margin-top: 2px;
+#text-9am {
+  margin: 0;
+  padding: 0%;
+}
+
+.timeBlockItem {
+  height: 75px
 }

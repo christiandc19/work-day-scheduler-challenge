@@ -4,20 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
     <link rel="stylesheet" href="Develop/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
@@ -29,21 +23,39 @@
       <p id="currentDay" class="lead"></p>
     </header>
           <!-- Timeblocks go here -->
-    <div class="container">
-      <div id="list-example" class="list-group">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-        <input class="list-group-item list-group-item-action border border-primary">
-      </div>
-    </div>
-    <script src="./Develop/js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+          <section class="container">
+          <!-- 9:00 AM -->
+            <div class="row ">
+              <h5 class="timeBlockItem col-1 border border-info text-center" id="text-9am">9:00AM</h5>
+              <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea" cols="30" rows="10"></textarea>
+              <button class="timeBlockItem saveBtn col-1 border border-info" id="save9am">Save</button>
+            </div>
+          <!-- 10:00 AM -->
+          <div class="row ">
+            <h5 class="timeBlockItem col-1 border border-info text-center" id="text-9am">10:00AM</h5>
+            <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea" cols="30" rows="10"></textarea>
+            <button class="timeBlockItem saveBtn col-1 border border-info">Save</button>
+          </div>
+          <!-- 11:00 AM -->
+          <div class="row ">
+            <h5 class="timeBlockItem col-1 border border-info text-center" id="text-9am">11:00AM</h5>
+            <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea" cols="30" rows="10"></textarea>
+            <button class="timeBlockItem saveBtn col-1 border border-info">Save</button>
+          </div>
+          <!-- 12:00 NN -->
+          <div class="row ">
+            <h5 class="timeBlockItem col-1 border border-info text-center" id="text-9am">12:00NN</h5>
+            <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea" cols="30" rows="10"></textarea>
+            <button class="timeBlockItem saveBtn col-1 border border-info">Save</button>
+          </div>
+
+        </section>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>    
+<script src="./Develop/js/script.js"></script>
   </body>
 </html>
