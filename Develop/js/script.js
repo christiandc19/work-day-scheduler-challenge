@@ -1,21 +1,10 @@
-var save9 = document.querySelector("#save9am") // 9:00 AM Save Button
-var save10 = document.querySelector("#save10am") // 10:00 AM Save Button
-var save11 = document.querySelector("#save11am") // 11:00 AM Save Button
-var save12 = document.querySelector("#save12nn") // 12:00 NN Save Button
-var save1 = document.querySelector("#save1pm") // 1:00 PM Save Button
-var save2 = document.querySelector("#save2pm") // 2:00 PM Save Button
-var save3 = document.querySelector("#save3pm") // 3:00 PM Save Button
-var save4 = document.querySelector("#save4pm") // 4:00 PM Save Button
-var save5 = document.querySelector("#save5pm") // 5:00 PM Save Button
 
 var californiaTime = document.querySelector("#currentDay");
-var californiaHour = document.querySelector("#demo");
 
 
 var currentTime = moment();
-californiaTime.textContent = currentTime.format("MMM Do YY");
-californiaHour.textContent = currentTime.format("hh");
-
+californiaTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a'); // January 28th 2022, 11:52:38 pm
+var currentHour = moment().format('h'); // January 28th 2022, 11:52:38 pm
 var am = true;
 
 // create elements for timeblock
@@ -23,8 +12,7 @@ function showSched() {
     // $(".container").empty();
     var officeHours = 9;
 
-    for (var i = 1; i < 9; i++) {
-
+    for (var i = 1; i < 10; i++) {
       var containerRow = $("<div class='row'>");
       var hourBox = $("<div class='col-1 hour time-block'>");
       if (am) {
@@ -32,49 +20,81 @@ function showSched() {
       } else {
         hourBox.text(officeHours + ":00PM");
       }
-      var taskBox = $("<textarea class='col-10 description time-block textarea' id='text-area'>");
-      var btnBox = $("<button class='col-1 time-block .saveBtn id='btn-box'>Save</button>" );
 
-// Append Container Elements
+      var taskBox = $("<textarea class='col-10 description textarea' id='text-area'>");
+      taskBox.addClass("description-" + i);
+      
+      if(officeHours == currentHour) {
+        taskBox.addClass("present");
+      } else  if (officeHours > currentHour){
+        taskBox.addClass("future");
+      } else {
+        taskBox.addClass("past");
+      }
+
+      var btnBox = $("<button class='col-1 time-block saveBtn' id='btn-box'>Save</button>" );
+
+      // Append Container Elements
       $(".container").append(containerRow);
       containerRow.append(hourBox);
       containerRow.append(taskBox);
       containerRow.append(btnBox);
       officeHours++;
-
+      
       if (officeHours > 12) {
         officeHours = 1;
         am = false;
-        officeHours++;
       }
+    
+    // save-item functon in a closure function
 
-// save-item functon in a closure function
+    function saveFunc(index) {
+      btnBox.click(function() {
 
-function saveFunc(index) {
 
-  btnBox.click(function() {
-    var text1 = $("#text-area").val(); //get the value of the textarea
+        var task = $(".description-" + index).val(); //get the value of the textarea
         if(index === 1){
-          localStorage.setItem("task4", text1)
-            console.log(text1);
-              } else if (index === 2) {
-                console.log("hello")
-              }
-        });
+        console.log(task);        
+        localStorage.setItem("task1", task) 
+        } else if (index === 2) {
+          localStorage.setItem("task2", task)        
+        }  else if (index === 3) {
+          localStorage.setItem("task3", task)
+        }  else if (index === 4) {
+          localStorage.setItem("task4", task)
+        }  else if (index === 5) {
+          localStorage.setItem("task5", task)
+        }  else if (index === 6) {
+          localStorage.setItem("task6", task)
+        }  else if (index === 7) {
+          localStorage.setItem("task7", task)
+        }  else if (index === 8) {
+          localStorage.setItem("task8", task)
+        }  else if (index === 9) {
+          localStorage.setItem("task9", task)
+        } 
+
+      });
     }
-      saveFunc(i);
-    }
+    saveFunc(i);
+  }
 }
 
-
-
-
-
-
-
-
-
 showSched();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // // SAVE TO LOCAL STORAGE FUNCTION
@@ -150,6 +170,16 @@ showSched();
 //   save5.addEventListener("click", saveItems)
 
 
+//var save9 = document.querySelector("#save9am") // 9:00 AM Save Button
+// var save10 = document.querySelector("#save10am") // 10:00 AM Save Button
+// var save11 = document.querySelector("#save11am") // 11:00 AM Save Button
+// var save12 = document.querySelector("#save12nn") // 12:00 NN Save Button
+// var save1 = document.querySelector("#save1pm") // 1:00 PM Save Button
+// var save2 = document.querySelector("#save2pm") // 2:00 PM Save Button
+// var save3 = document.querySelector("#save3pm") // 3:00 PM Save Button
+// var save4 = document.querySelector("#save4pm") // 4:00 PM Save Button
+// var save5 = document.querySelector("#save5pm") // 5:00 PM Save Button
+
 
 
 
@@ -171,20 +201,20 @@ showSched();
 // </div>
 // <!-- 11:00 AM -->
 // <div class="row ">
-//   <p class="timeBlockItem col-1 border border-info text-center" id="text11am">11:00AM</p>
+//   <p class="timeBlockItem col-1 border border-info text-center" id="task1am">11:00AM</p>
 //   <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea11" cols="30" rows="10"></textarea>
 //   <button class="timeBlockItem saveBtn col-1 border border-info" id="save11am">Save</button>
 // </div>
 // <!-- 12:00 NN -->
 // <div class="row ">
-//   <p class="timeBlockItem col-1 border border-info text-center" id="text12nn">12:00NN</p>
+//   <p class="timeBlockItem col-1 border border-info text-center" id="task2nn">12:00NN</p>
 //   <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea12" cols="30" rows="10"></textarea>
 //   <button class="timeBlockItem saveBtn col-1 border border-info" id="save12nn">Save</button>
 // </div>
 
 // <!-- 1:00 PM -->
 // <div class="row ">
-//   <p class="timeBlockItem col-1 border border-info text-center" id="text1pm">1:00PM</p>
+//   <p class="timeBlockItem col-1 border border-info text-center" id="taskpm">1:00PM</p>
 //   <textarea class="timeBlockItem col-10 border border-info textarea1" name="" id="textarea1" cols="30" rows="10"></textarea>
 //   <button class="timeBlockItem saveBtn col-1 border border-info" id="save1pm">Save</button>
 // </div>
