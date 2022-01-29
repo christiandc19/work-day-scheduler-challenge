@@ -44,6 +44,8 @@ function showSched() {
       if (officeHours > 12) {
         officeHours = 1;
         am = false;
+        officeHours++;
+
       }
     
     // save-item functon in a closure function
@@ -51,12 +53,15 @@ function showSched() {
     function saveFunc(index) {
       btnBox.click(function() {
 
-
+        var taskContainer = $(".description-" + index); //get the value of the textarea
         var task = $(".description-" + index).val(); //get the value of the textarea
+
         if(index === 1){
         console.log(task);        
-        localStorage.setItem("task1", task) 
+        localStorage.setItem("task1", task)
+
         } else if (index === 2) {
+          console.log(task);
           localStorage.setItem("task2", task)        
         }  else if (index === 3) {
           localStorage.setItem("task3", task)
@@ -79,21 +84,31 @@ function showSched() {
     saveFunc(i);
   }
 }
-
 showSched();
 
 
+function getVal() {
+  var getTask9am = localStorage.getItem("task1");
+  document.querySelector(".description-1").innerHTML = getTask9am;
 
+  var getTask10am = localStorage.getItem("task2");
+  document.querySelector(".description-2").innerHTML = getTask10am;
+  console.log(getTask10am);
 
+  var getTask11am = localStorage.getItem("task3");
+  document.querySelector(".description-3").innerHTML = getTask11am;
+  console.log(getTask11am);
 
+  var getTask12pm = localStorage.getItem("task4");
+  document.querySelector(".description-4").innerHTML = getTask12pm;
+  console.log(getTask12pm);
 
+  var getTask1pm = localStorage.getItem("task5");
+  document.querySelector(".description-5").innerHTML = getTask1pm;
+  console.log(getTask1pm);
 
-
-
-
-
-
-
+}
+getVal();
 
 
 
