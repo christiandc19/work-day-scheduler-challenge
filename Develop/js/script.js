@@ -4,21 +4,22 @@ var californiaTime = document.querySelector("#currentDay");
 
 var currentTime = moment();
 californiaTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a'); // January 28th 2022, 11:52:38 pm
-var currentHour = moment().format('h'); // January 28th 2022, 11:52:38 pm
+var currentHour = moment().format('H'); // January 28th 2022, 11:52:38 pm
 var am = true;
+
 
 // create elements for timeblock
 function showSched() {
     // $(".container").empty();
-    var officeHours = 9;
+    var officeHours = 10;
 
     for (var i = 1; i < 10; i++) {
       var containerRow = $("<div class='row'>");
       var hourBox = $("<div class='col-1 hour time-block'>");
       if (am) {
-        hourBox.text(officeHours+ ":00AM");
+        hourBox.text(officeHours+ ":hr");
       } else {
-        hourBox.text(officeHours + ":00PM");
+        hourBox.text(officeHours + ":hr");
       }
 
       var taskBox = $("<textarea class='col-10 description textarea' id='text-area'>");
@@ -41,11 +42,12 @@ function showSched() {
       containerRow.append(btnBox);
       officeHours++;
       
-      if (officeHours > 12) {
-        officeHours = 1;
+      if (officeHours > 18) {
+        officeHours = 0;
         am = false;
         officeHours++;
-
+console.log(officeHours);
+console.log(currentHour)
       }
     
     // save-item functon in a closure function
@@ -106,6 +108,23 @@ function getVal() {
   var getTask1pm = localStorage.getItem("task5");
   document.querySelector(".description-5").innerHTML = getTask1pm;
   console.log(getTask1pm);
+
+  var getTask2pm = localStorage.getItem("task6");
+  document.querySelector(".description-6").innerHTML = getTask2pm;
+  console.log(getTask2pm);
+
+  var getTask3pm = localStorage.getItem("task7");
+  document.querySelector(".description-7").innerHTML = getTask3pm;
+  console.log(getTask3pm);
+
+  var getTask4pm = localStorage.getItem("task8");
+  document.querySelector(".description-8").innerHTML = getTask4pm;
+  console.log(getTask4pm);
+
+  var getTask5pm = localStorage.getItem("task8");
+  document.querySelector(".description-8").innerHTML = getTask5pm;
+  console.log(getTask5pm);
+
 
 }
 getVal();
