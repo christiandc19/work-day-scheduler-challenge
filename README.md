@@ -16,7 +16,7 @@ Create a simple calendar application that allows a user to save events for each 
 
 ## Challeng Screenshot
 
-![screenshot](./Develop/assets/images/proj-screenshot.png)
+![screenshot](Develop/images/proj-screenshot.png)
 
 
 ## Deployment
